@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceyo134jv5lqf"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_enemy"]
+[ext_resource type="Texture2D" uid="uid://d4j4hwehpm76g" path="res://ecfc2b00-d793-42b3-a5fa-990c6db7ca39.png" id="2_spr"]
+[ext_resource type="PackedScene" path="res://smoke.tscn" id="3_smoke"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enemy"]
+radius = 34.0
+
+[node name="Enemy" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_enemy")
+forward_direction = Vector2(0, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.23726104, 0.19012603)
+texture = ExtResource("2_spr")
+region_enabled = true
+region_rect = Rect2(67.189514, 230.63947, 314.15686, 476.41364)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, -46)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_enemy")
+
+[node name="HPLabel" type="Label" parent="."]
+offset_left = -34.0
+offset_top = -80.0
+offset_right = 34.0
+offset_bottom = -57.0
+text = "HP: 100"
+
+[node name="SmokeTrail" parent="." instance=ExtResource("3_smoke")]
+position = Vector2(0, 36)
